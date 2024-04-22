@@ -42,14 +42,16 @@ function App() {
           <button onClick={addToFavorites}>Add to Favorites</button>
         </div>
 
-        
+        {typeof weather.main !== "undefined" ? (
           <div>
             <p>{weather.name}</p>
             <p>{weather.main.temp}°C</p>
             <p>{weather.weather[0].main}</p>
             <p>({weather.weather[0].description})</p>
           </div>
-      
+        ) : (
+          ""
+        )}
 
         <div>
           <h2>Favorites</h2>
