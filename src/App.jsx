@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 
 const api = {
-  key: "3207c044884be96c2c2ad5d1455cb945",
+  key:  import.meta.env.VITE_API_KEY,
   base: "https://api.openweathermap.org/data/2.5/",
 };
 
@@ -42,14 +42,16 @@ function App() {
           <button onClick={addToFavorites}>Add to Favorites</button>
         </div>
 
-        
+        {typeof weather.main !== "undefined" ? (
           <div>
             <p>{weather.name}</p>
             <p>{weather.main.temp}°C</p>
             <p>{weather.weather[0].main}</p>
             <p>({weather.weather[0].description})</p>
           </div>
-      
+        ) : (
+          ""
+        )}
 
         <div>
           <h2>Favorites</h2>
